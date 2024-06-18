@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-10">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Pet ID</th>
+                    <th>Pet Name</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let adoption of adoptionList">
+                    <td> {{adoption.petId}} </td>
+                    <td> {{adoption.petName}} </td>
+                    <td> {{adoption.name}} </td>
+                    <td> {{adoption.contact}} </td>
+                    <td align="right"> <button (click)="approveAdoption(adoption._id)" class="btn btn-primary">Approve</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

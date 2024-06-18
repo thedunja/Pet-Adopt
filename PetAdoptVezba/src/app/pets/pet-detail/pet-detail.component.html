@@ -1,0 +1,48 @@
+<div class="row">
+
+    <div class="col-6">
+
+        <div class="row">
+            <div class="col-6">
+                <img src="{{pet.image}}" alt="Slika ljubimca" width="100%">
+            </div>
+            <div class="col-6">
+                <h4>{{pet.name}}</h4>
+                <p>Category: {{pet.category}}</p>
+                <p>Sex: {{pet.sex == 'f' ? 'Female' : 'Male'}}</p>
+                <p>Size: {{pet.size_kg}}</p>
+            </div>
+        </div>
+        <hr>
+        <p>{{pet.story}}</p>
+    </div>
+    
+    <div class="col-5">
+
+        <h3 class="text-center">Adoption</h3>
+        <form class="form" #adoptionForm="ngForm" novalidate>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" required minlength="4"
+                [(ngModel)]="adoption.name" #name="ngModel"/>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+                <div *ngIf="name.errors?.['required']">Name is required.</div>
+                <div *ngIf="name.errors?.['minlength']">
+                    Name must be at least 4 characters long.
+                </div>
+            </div>
+            <label for="contact">Contact</label>
+            <input type="text" id="contact" name="contact" class="form-control" required
+                [(ngModel)]="adoption.contact" #contact="ngModel"/>
+
+            <div *ngIf="(contact.dirty || contact.touched)" class="alert">
+                <div *ngIf="contact.errors?.['required']">Contact is required.</div>
+            </div>
+            <div class="col-2 ms-auto">
+                <button class="btn btn-primary" type="submit" (click)="submitAdoption()">Submit</button>
+            </div>
+            <app-toast aria-live="polite" aria-atomic="true"></app-toast>
+        </form>
+
+    </div>
+    
+</div>
